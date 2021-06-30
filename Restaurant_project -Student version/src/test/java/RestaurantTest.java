@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,6 +19,8 @@ class RestaurantTest {
         restaurant =new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
         restaurant.addToMenu("Sweet corn soup",119);
         restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("Hot and Sweet soup",150);
+        restaurant.addToMenu("Stir Fry Vegetables", 300);
 
     }
 
@@ -40,6 +44,14 @@ class RestaurantTest {
 
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>MENU<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    @Test
+    public void return_total_order_value_when_list_of_items_names_is_passed(){
+        //WRITE UNIT TEST CASE HERE
+        List<String> itemNameList = new ArrayList<String>();
+        itemNameList.add("Hot and Sweet soup");
+        itemNameList.add("Vegetable lasagne");
+        assertEquals(419,restaurant.totalOrderValue(itemNameList));
+    }
     @Test
     public void adding_item_to_menu_should_increase_menu_size_by_1(){
 
